@@ -42,9 +42,9 @@ public class UserController {
      * 회원 정보 수정
      */
     @PutMapping(value = "/user")
-    public SingleResult<User> modify(@RequestParam Long msrl, @RequestParam String name) {
+    public SingleResult<User> modify(@RequestParam Long id, @RequestParam String name) {
         User user = User.builder()
-                .msrl(msrl)
+                .id(id)
                 .name(name)
                 .build();
         return responseService.getSingleResult(userJpaRepo.save(user));
@@ -53,9 +53,9 @@ public class UserController {
     /**
      * 회원 삭제
      */
-    @DeleteMapping(value = "/user/{msrl}")
-    public CommonResult delete(@PathVariable int msrl) {
-        userJpaRepo.deleteById(msrl);
+    @DeleteMapping(value = "/user/{id}")
+    public CommonResult delete(@PathVariable Long id) {
+        userJpaRepo.deleteById(id);
         // 성공 결과 정보만 필요한경우 getSuccessResult()를 이용하여 결과를 출력한다.
         return responseService.getSuccessResult();
     }
