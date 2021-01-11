@@ -1,5 +1,7 @@
 package project.financial.security;
 
+// import 생략
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -18,16 +20,14 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-/**
- * jwt 토큰 생성 및 유효성 검증 컴포넌트
- */
-@RequiredArgsConstructor
+
 @Component
+@RequiredArgsConstructor
 public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
 
     @Value("spring.jwt.secret")
     private String secretKey;
-    //  토큰유효시간
+
     private long tokenValidMilisecond = 1000L * 60 * 60; // 1시간만 토큰 유효
 
     private final UserDetailsService userDetailsService;
@@ -61,7 +61,7 @@ public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
-    // Request의 Header에서 token 파싱 : "X-AUTH-TOKEN: jwt토큰" 유효성 체크
+    // Request의 Header에서 token 파싱 : "X-AUTH-TOKEN: jwt토큰"
     public String resolveToken(HttpServletRequest req) {
         return req.getHeader("X-AUTH-TOKEN");
     }
