@@ -10,8 +10,4 @@ public class FinancialApplication {
 		SpringApplication.run(FinancialApplication.class, args);
 	}
 
-//	@Bean
-//	public PasswordEncoder passwordEncoder(){
-//		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//	}
 }

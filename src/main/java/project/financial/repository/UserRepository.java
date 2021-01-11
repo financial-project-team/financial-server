@@ -6,7 +6,9 @@ import project.financial.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -17,9 +19,15 @@ public class UserRepository {
 
     public void save(User user){em.persist(user);}
 
-    public List<User> findByUid(String uid) {
-        return em.createQuery("select u from User u where u.uid =:uid", User.class)
-                .setParameter("uid", uid)
+//    public Optional<User> findByEmail(String uid) {
+//        List<User> users = em.createQuery("select u from User u where u.uid =:uid", User.class)
+//                .setParameter("uid", uid)
+//                .getResultList();
+//        return users.;
+//    }
+    public List<User> findByEmail(String email) {
+        return em.createQuery("select u from User u where u.email =:email", User.class)
+                .setParameter("email", email)
                 .getResultList();
     }
     public User findById(Long id){ return em.find(User.class,id);}
