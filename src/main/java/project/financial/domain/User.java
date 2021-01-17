@@ -35,7 +35,7 @@ public class User implements UserDetails {
     @Column(nullable = true, length = 100)
     private String name;
 
-    private Long account;
+    private Integer account;
     private LocalDateTime dateTime;
 
     @ElementCollection(fetch = FetchType.EAGER)

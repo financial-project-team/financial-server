@@ -18,7 +18,7 @@ public class UserDto {
         private Long id;
         private String name;
         private String email;
-        private Long account;
+        private Integer account;
 
         public CreateUserResponse(User user) {
             this.id = user.getId();
