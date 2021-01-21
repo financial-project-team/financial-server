@@ -33,7 +33,6 @@ public class UserController {
     @GetMapping(value = "/{id}")
     public UserDto.CreateUserResponse getUserInfo(@RequestHeader("authToken") String token ,
                                                   @PathVariable("id") Long id){
-        //System.out.println(jwtTokenProvider.getUserId(token));
         User user = userService.findById(jwtTokenProvider.getUserId(token));
         return new UserDto.CreateUserResponse(user);
     }

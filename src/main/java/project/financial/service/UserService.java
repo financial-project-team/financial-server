@@ -22,24 +22,6 @@ public class UserService implements UserDetailsService {
     private final AuthRepository authRepository;
     private final UserRepository userRepository;
 
-    @Transactional
-    public Long join(UserDto.CreateUserRequest request){
-        User user = User.builder()
-                .name(request.getName())
-                .password(request.getPassword())
-                .email(request.getEmail())
-                .build();
-        validateDuplicateUser(user);
-        userRepository.save(user);
-        return user.getId();
-    }
-
-    private void validateDuplicateUser(User user){
-        List<User> findUser = userRepository.findByEmail(user.getEmail());
-        if(!findUser.isEmpty()){
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }
-    }
     public List<User> findUsers() { return userRepository.findAll();}
 
     public User findById(Long id){
