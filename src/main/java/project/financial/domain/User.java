@@ -35,8 +35,12 @@ public class User implements UserDetails {
     @Column(nullable = true, length = 100)
     private String name;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserStock> userStocks = new ArrayList<>();
+
     private Integer account;
     private LocalDateTime dateTime;
+
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
