@@ -18,11 +18,11 @@ public class UserStock {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "STOCK_ID")
+    @JoinColumn(name = "stock_id_")
     private Stock stock;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(nullable = false)

@@ -17,12 +17,33 @@ import java.util.List;
 @AllArgsConstructor
 public class Stock {
     @Id @GeneratedValue
-    @Column(name = "STOCK_ID")
+    @Column(name = "stock_id")
     private Long id;
 
     @OneToMany(mappedBy = "stock")
     private List<UserStock> userStocks = new ArrayList<>();
 
+    //주식이름
     private String name;
-    private Long presentPrice;
+    //현재가
+    private Long currentPrice;
+    //전일비
+    private Long preContrastPrice;
+    //등락률
+    private Double rate;
+    //액면가
+    private Integer faceValue;
+    //시가총액
+    private Long capitalization;
+    //상장주식수
+    private Long listedShares;
+    //외국인비율
+    private Double foreignerRate;
+    //거래량
+    private Long volume;
+    //per
+    private Double per;
+    //roe
+    private Double roe;
+
 }
