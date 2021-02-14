@@ -21,7 +21,6 @@ public class AuthController {
     private final AuthRepository authRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
-    private final UserService userService;
 
     @PostMapping("/signup")
     public Long join(@RequestBody Map<String, String> user) {

@@ -1,16 +1,15 @@
 package project.financial.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.financial.domain.User;
-import project.financial.dto.UserDto;
 import project.financial.repository.AuthRepository;
 import project.financial.repository.UserRepository;
+import project.financial.repository.UserStockRepository;
 
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class UserService implements UserDetailsService {
 
     private final AuthRepository authRepository;
     private final UserRepository userRepository;
+    private final UserStockRepository userStockRepository;
 
     public List<User> findUsers() { return userRepository.findAll();}
 

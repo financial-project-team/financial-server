@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.LifecycleState;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,23 +23,24 @@ public class Stock {
     private List<UserStock> userStocks = new ArrayList<>();
 
     //주식이름
+
     private String name;
     //현재가
-    private Long currentPrice;
+    private Double currentPrice;
     //전일비
-    private Long preContrastPrice;
+    private Double preContrastPrice;
     //등락률
     private Double rate;
     //액면가
-    private Integer faceValue;
+    private Double faceValue;
     //시가총액
-    private Long capitalization;
+    private Double capitalization;
     //상장주식수
-    private Long listedShares;
+    private Double listedShares;
     //외국인비율
     private Double foreignerRate;
     //거래량
-    private Long volume;
+    private Double volume;
     //per
     private Double per;
     //roe

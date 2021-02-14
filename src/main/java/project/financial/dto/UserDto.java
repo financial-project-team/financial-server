@@ -1,6 +1,5 @@
 package project.financial.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import project.financial.domain.User;

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Builder
 @Entity
@@ -18,7 +17,7 @@ public class UserStock {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "stock_id_")
+    @JoinColumn(name = "stock_id")
     private Stock stock;
 
     @ManyToOne
@@ -33,15 +32,15 @@ public class UserStock {
     //손익금액
     private Double gainOrLoss;
     //매수날짜
-    private LocalDateTime buyDate;
+    //private LocalDateTime buyDate;
     //매도날짜
-    private LocalDateTime sellDate;
+    //private LocalDateTime sellDate;
     //수량
-    private Long quantity;
+    private Double quantity;
     //평가금액
     private Double evalAmount;
     //상태
-    private BuySellStatus status;
+    //private BuySellStatus status;
     //매수금액
-    private Long perchaseAmount;
+    private Double perchaseAmount;
 }

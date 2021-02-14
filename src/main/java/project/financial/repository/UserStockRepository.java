@@ -9,30 +9,23 @@ import project.financial.dto.UserStockDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class UserRepository {
-
+public class UserStockRepository {
     @PersistenceContext
     private final EntityManager em;
 
-    public void save(User user){em.persist(user);}
 
-    public List<User> findByEmail(String email) {
-        return em.createQuery("select u from User u where u.email =:email", User.class)
-                .setParameter("email", email)
-                .getResultList();
-    }
-    public User findById(Long id){ return em.find(User.class,id);}
-
-    public List<User> findAll(){
-        return em.createQuery("select u from User u",User.class)
-                .getResultList();
+    public void save(UserStock userStock){
+        em.persist(userStock);
+        em.flush();
     }
 
-
+    public List<UserStock> showMyStock(Long userId){
+        return em.createQuery("select u from UserStock u where u.user =:userId", UserStock.class)
+                .setParameter("userId",userId)
+                .getResultList();
+    }
 }
