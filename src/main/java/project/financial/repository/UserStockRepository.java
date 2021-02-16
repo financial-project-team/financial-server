@@ -2,10 +2,7 @@ package project.financial.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import project.financial.domain.Stock;
-import project.financial.domain.User;
 import project.financial.domain.UserStock;
-import project.financial.dto.UserStockDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

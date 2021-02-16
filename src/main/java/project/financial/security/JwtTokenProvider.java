@@ -65,7 +65,6 @@ public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
 
     public Long getUserId(String token){
         return Long.valueOf((Integer) Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("id"));
-
     }
 
     // Request의 Header에서 token 파싱 : "X-AUTH-TOKEN: jwt토큰"

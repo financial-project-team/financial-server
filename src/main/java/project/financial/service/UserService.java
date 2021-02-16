@@ -9,9 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import project.financial.domain.User;
 import project.financial.repository.AuthRepository;
 import project.financial.repository.UserRepository;
-import project.financial.repository.UserStockRepository;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -20,9 +17,6 @@ public class UserService implements UserDetailsService {
 
     private final AuthRepository authRepository;
     private final UserRepository userRepository;
-    private final UserStockRepository userStockRepository;
-
-    public List<User> findUsers() { return userRepository.findAll();}
 
     public User findById(Long id){
         return userRepository.findById(id);

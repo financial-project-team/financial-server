@@ -23,15 +23,16 @@ public class AuthController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/signup")
-    public Long join(@RequestBody Map<String, String> user) {
-        return authRepository.save(User.builder()
+    public String join(@RequestBody Map<String, String> user) {
+        User user1 = authRepository.save(User.builder()
                 .account(0)
                 .dateTime(LocalDateTime.now())
                 .name(user.get("name"))
                 .email(user.get("email"))
                 .password(passwordEncoder.encode(user.get("password")))
                 .roles(Collections.singletonList("ROLE_USER"))
-                .build()).getId();
+                .build());
+        return user1.getName();
     }
 
     // 로그인

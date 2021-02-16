@@ -22,11 +22,7 @@ public class UserRepository {
 
     public void save(User user){em.persist(user);}
 
-    public List<User> findByEmail(String email) {
-        return em.createQuery("select u from User u where u.email =:email", User.class)
-                .setParameter("email", email)
-                .getResultList();
-    }
+
     public User findById(Long id){ return em.find(User.class,id);}
 
     public List<User> findAll(){
