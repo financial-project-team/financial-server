@@ -1,6 +1,7 @@
 package project.financial.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.financial.domain.User;
 import project.financial.dto.UserDto;
@@ -37,9 +38,11 @@ public class UserController {
                 .collect(Collectors.toList());
 
         return new UserDto.Result(collect);
-
-
     }
 
-
+    @DeleteMapping
+    public ResponseEntity<?> withDrawal(@RequestHeader("authToken") String token){
+        userService.withDrawal(jwtTokenProvider.getUserId(token));
+        return ResponseEntity.ok().build();
+    }
 }

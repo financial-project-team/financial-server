@@ -28,10 +28,15 @@ public class UserService implements UserDetailsService {
     public List<User> findUsers(){
         return userRepository.findAll();
     }
+    @Transactional
+    public void withDrawal(Long userId) {
+        authRepository.deleteById(userId);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return authRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
     }
+
 }
