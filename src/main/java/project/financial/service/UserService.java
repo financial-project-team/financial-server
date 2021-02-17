@@ -10,6 +10,8 @@ import project.financial.domain.User;
 import project.financial.repository.AuthRepository;
 import project.financial.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -18,8 +20,13 @@ public class UserService implements UserDetailsService {
     private final AuthRepository authRepository;
     private final UserRepository userRepository;
 
+
     public User findById(Long id){
         return userRepository.findById(id);
+    }
+
+    public List<User> findUsers(){
+        return userRepository.findAll();
     }
 
     @Override

@@ -35,6 +35,8 @@ public class AuthController {
         return user1.getName();
     }
 
+
+
     // 로그인
     @PostMapping("/signin")
     public String login(@RequestBody Map<String, String> user) {

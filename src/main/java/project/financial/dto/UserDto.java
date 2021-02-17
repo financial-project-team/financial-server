@@ -1,8 +1,11 @@
 package project.financial.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import project.financial.domain.User;
+
+import java.util.List;
 
 public class UserDto {
 
@@ -30,6 +33,14 @@ public class UserDto {
     public static class SignRequest{
         private String email;
         private String password;
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class Result<T>{
+        private T data;
+
+
     }
 
 }

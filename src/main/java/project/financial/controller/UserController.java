@@ -1,27 +1,15 @@
 package project.financial.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import project.financial.domain.Stock;
 import project.financial.domain.User;
 import project.financial.dto.UserDto;
-import project.financial.dto.UserStockDto;
-import project.financial.repository.AuthRepository;
-import project.financial.repository.UserRepository;
 import project.financial.security.JwtTokenProvider;
-import project.financial.service.StockService;
 import project.financial.service.UserService;
 
-import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @RestController
@@ -41,11 +29,17 @@ public class UserController {
         return new UserDto.CreateUserResponse(user);
     }
 
+    @GetMapping(value = "/users")
+    public UserDto.Result getUsers(){
+        List<User> Users = userService.findUsers();
+        List<UserDto.CreateUserResponse> collect = Users.stream()
+                .map(u -> new UserDto.CreateUserResponse(u))
+                .collect(Collectors.toList());
+
+        return new UserDto.Result(collect);
 
 
-
-
-
+    }
 
 
 }

@@ -20,9 +20,6 @@ public class UserRepository {
     @PersistenceContext
     private final EntityManager em;
 
-    public void save(User user){em.persist(user);}
-
-
     public User findById(Long id){ return em.find(User.class,id);}
 
     public List<User> findAll(){
