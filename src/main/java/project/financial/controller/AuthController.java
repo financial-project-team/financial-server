@@ -28,7 +28,6 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> join(@RequestBody Map<String, String> user) {
         User user1;
-        System.out.println("asdf");
         try {
             user1 = authRepository.save(User.builder()
                     .account(0)
@@ -39,7 +38,7 @@ public class AuthController {
                     .roles(Collections.singletonList("ROLE_USER"))
                     .build());
         } catch ( Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         return ResponseEntity.ok().body(new UserDto.CreateUserResponse(user1));
     }
