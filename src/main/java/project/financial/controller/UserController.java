@@ -23,9 +23,8 @@ public class UserController {
 
     //유저조회
     @GetMapping(value = "/{user_id}")
-    public UserDto.CreateUserResponse getUserInfo(@RequestHeader("authToken") String token ,
-                                                  @PathVariable("user_id") Long id){
-        User user = userService.findById(jwtTokenProvider.getUserId(token));
+    public UserDto.CreateUserResponse getUserInfo(@PathVariable("user_id") Long id){
+        User user = userService.findById(id);
 
         return new UserDto.CreateUserResponse(user);
     }

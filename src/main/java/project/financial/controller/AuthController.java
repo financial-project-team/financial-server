@@ -1,9 +1,12 @@
 package project.financial.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import project.financial.domain.User;
+import project.financial.dto.UserDto;
 import project.financial.repository.AuthRepository;
 import project.financial.security.JwtTokenProvider;
 import project.financial.service.UserService;
@@ -23,16 +26,21 @@ public class AuthController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/signup")
-    public String join(@RequestBody Map<String, String> user) {
-        User user1 = authRepository.save(User.builder()
-                .account(0)
-                .dateTime(LocalDateTime.now())
-                .name(user.get("name"))
-                .email(user.get("email"))
-                .password(passwordEncoder.encode(user.get("password")))
-                .roles(Collections.singletonList("ROLE_USER"))
-                .build());
-        return user1.getName();
+    public ResponseEntity<?> join(@RequestBody Map<String, String> user) {
+        User user1;
+        try {
+            user1 = authRepository.save(User.builder()
+                    .account(0)
+                    .dateTime(LocalDateTime.now())
+                    .name(user.get("name"))
+                    .email(user.get("email"))
+                    .password(passwordEncoder.encode(user.get("password")))
+                    .roles(Collections.singletonList("ROLE_USER"))
+                    .build());
+        } catch ( Exception e) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(new UserDto.CreateUserResponse(user1));
     }
 
 
