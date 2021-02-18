@@ -38,7 +38,7 @@ public class AuthController {
                     .roles(Collections.singletonList("ROLE_USER"))
                     .build());
         } catch ( Exception e) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
         return ResponseEntity.ok().body(new UserDto.CreateUserResponse(user1));
     }
