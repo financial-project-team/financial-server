@@ -28,6 +28,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> join(@RequestBody Map<String, String> user) {
         User user1;
+        System.out.println("asdf");
         try {
             user1 = authRepository.save(User.builder()
                     .account(0)
