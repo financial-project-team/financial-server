@@ -5,3 +5,4 @@
 
 # client
   - API (https://github.com/financial-project-team/financial-server/blob/main/API.md)
+  - 주식 (https://github.com/financial-project-team/financial-server/blob/main/financial_Terminology/stock_terminology.md)
