@@ -23,7 +23,7 @@ public class StockController {
     private final UserStockService userStockService;
 
     //주식 추가
-    @PostMapping(value = "/add/stock")
+    @PostMapping(value = "/add")
     public UserStockDto.CreateUserStockResponse addStock(@RequestHeader("authToken") String token,
                                                          @RequestBody UserStockDto.CreateUserStockRequest request){
         User user = userService.findById(jwtTokenProvider.getUserId(token));

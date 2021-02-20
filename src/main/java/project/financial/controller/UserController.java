@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final JwtTokenProvider jwtTokenProvider;
@@ -25,17 +25,15 @@ public class UserController {
     @GetMapping(value = "/{user_id}")
     public UserDto.CreateUserResponse getUserInfo(@PathVariable("user_id") Long id){
         User user = userService.findById(id);
-
         return new UserDto.CreateUserResponse(user);
     }
 
-    @GetMapping(value = "/users")
+    @GetMapping
     public UserDto.Result getUsers(){
         List<User> Users = userService.findUsers();
         List<UserDto.CreateUserResponse> collect = Users.stream()
                 .map(u -> new UserDto.CreateUserResponse(u))
                 .collect(Collectors.toList());
-
         return new UserDto.Result(collect);
     }
 
