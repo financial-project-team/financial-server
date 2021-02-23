@@ -31,8 +31,8 @@ public class StockController {
         UserStock userStock = UserStock.builder()
                 .user(user)
                 .stock(stock)
-                .gainOrLoss((request.getRating() - stock.getCurrentPrice()) * request.getQuantity())
-                .evalAmount((request.getRating() * request.getQuantity()) + ((request.getRating() - stock.getCurrentPrice()) * request.getQuantity()))
+                .gainOrLoss((stock.getCurrentPrice() - request.getRating()) * request.getQuantity())
+                .evalAmount((request.getRating() * request.getQuantity()) + ((stock.getCurrentPrice() - request.getRating()) * request.getQuantity()))
                 .quantity(request.getQuantity())
                 .rating(request.getRating())
                 .yield((stock.getCurrentPrice() - request.getRating()) / request.getRating() * 100)
@@ -40,7 +40,5 @@ public class StockController {
                 .build();
         return userStockService.addStock(userStock);
     }
-
-
 
 }
