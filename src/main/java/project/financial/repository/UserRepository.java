@@ -16,7 +16,13 @@ public class UserRepository {
 
     public User findById(Long id){ return em.find(User.class,id);}
 
-    public List<User> findAll(){
+
+    public List<User> findUsers(){
+        return em.createQuery("select distinct u from User u" +
+                " join fetch u.userStocks us",User.class)
+                .getResultList();
+    }
+    public List<User> findSimpleUsers(){
         return em.createQuery("select u from User u",User.class)
                 .getResultList();
     }

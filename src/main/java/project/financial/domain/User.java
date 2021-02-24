@@ -39,7 +39,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<UserStock> userStocks = new ArrayList<>();
 
-    private Integer account;
+    private Double account;
     private LocalDateTime dateTime;
 
 

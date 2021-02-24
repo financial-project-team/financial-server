@@ -25,8 +25,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
+
     public List<User> findUsers(){
-        return userRepository.findAll();
+        return userRepository.findUsers();
     }
     @Transactional
     public void withDrawal(Long userId) {

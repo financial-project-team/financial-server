@@ -3,8 +3,6 @@ package project.financial.dto;
 
 import lombok.Data;
 import lombok.Getter;
-import project.financial.domain.BuySellStatus;
-import project.financial.domain.Stock;
 import project.financial.domain.UserStock;
 
 import java.time.LocalDateTime;
@@ -52,7 +50,6 @@ public class UserStockDto {
             this.perchaseAmount = userStock.getPerchaseAmount();
             this.rating = userStock.getRating();
             this.rate = userStock.getStock().getRate();
-
         }
     }
     @Data

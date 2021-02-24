@@ -9,7 +9,6 @@ import project.financial.domain.User;
 import project.financial.dto.UserDto;
 import project.financial.repository.AuthRepository;
 import project.financial.security.JwtTokenProvider;
-import project.financial.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -30,7 +29,7 @@ public class AuthController {
         User user1;
         try {
             user1 = authRepository.save(User.builder()
-                    .account(0)
+                    .account(0.0)
                     .dateTime(LocalDateTime.now())
                     .name(user.get("name"))
                     .email(user.get("email"))
